@@ -6,6 +6,9 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
 
+from src.components.data_tranformation import DataTransformation
+from src.components.data_tranformation import DataTransformationConfig
+
 @dataclass
 class DataIngestionConfig:
     train_data_path:str = os.path.join('Artifact',"train.csv")
@@ -47,5 +50,12 @@ class DataIngestion:
             raise CustomException(e,sys)
 
         
+
+if __name__ == "__main__":
+    obj = DataIngestion()
+    train_data_path,test_data_path = obj.initiate_data_ingestion()
+
+    data_transformaton = DataTransformation()
+    data_transformaton.initiate_data_transformation(train_data_path,test_data_path)
 
 
