@@ -15,7 +15,7 @@ from src.utils import save_object
 
 @ dataclass
 class DataTransformationConfig:
-    model_pkl_file_path = os.path.join('Artifact','model.pkl')
+    preprocessor_pkl_file_path = os.path.join('Artifact','preprocessor.pkl')
 
 
 class DataTransformation:
@@ -97,7 +97,7 @@ class DataTransformation:
 
             save_object(
 
-                file_path = self.data_transformation_config.model_pkl_file_path,
+                file_path = self.data_transformation_config.preprocessor_pkl_file_path,
                 obj = preprocessor_obj
 
             )
@@ -106,7 +106,8 @@ class DataTransformation:
             return (
                 train_arr,
                 test_arr,
-                self.data_transformation_config.model_pkl_file_path
+                self.data_transformation_config.preprocessor_pkl_file_path,
+
             )
 
 
